@@ -104,7 +104,7 @@ class PubSubMixin:
         For bound methods, it returns a WeakMethod. For anything else it
         returns a ref()
         """
-        if hasattr(callable, "__self__"):
+        if hasattr(callable, "__self__") and hasattr(callable, "__func__"):
             return WeakMethod(callable)
         else:
             return ref(callable)
